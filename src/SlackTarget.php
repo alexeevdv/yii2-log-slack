@@ -5,6 +5,7 @@ namespace alexeevdv\log;
 use Maknz\Slack\Client as SlackClient;
 use Yii;
 use yii\base\InvalidConfigException;
+use yii\helpers\ArrayHelper;
 use yii\log\Target;
 
 /**
@@ -55,6 +56,13 @@ class SlackTarget extends Target
     public $allow_markdown = true;
 
     /**
+     * @var array
+     */
+    public $attachmentOptions = [
+        'color' => 'danger',
+    ];
+
+    /**
      * @var SlackClient
      */
     private $_client;
@@ -71,14 +79,19 @@ class SlackTarget extends Target
         parent::init();
     }
 
-
     /**
      * @inheritdoc
      */
     public function export()
     {
         foreach ($this->messages as $message) {
-            $this->getClient()->send($this->formatMessage($message));
+            $attachment = ArrayHelper::merge(
+                $this->attachmentOptions,
+                [
+                    'text' => $this->formatMessage($message),
+                ]
+            );
+            $this->getClient()->attach($attachment)->send();
         }
     }
 
@@ -88,7 +101,7 @@ class SlackTarget extends Target
     private function getClient()
     {
         if (!$this->_client) {
-            $this->_client = Yii::createObject(SlackClient::class, [$this->getOptions()]);
+            $this->_client = Yii::createObject(SlackClient::class, [$this->webhook, $this->getOptions()]);
         }
         return $this->_client;
     }
@@ -99,7 +112,6 @@ class SlackTarget extends Target
     private function getOptions()
     {
         $options = [
-            'webhook' => $this->webhook,
             'icon' => $this->icon,
             'username' => $this->username,
             'channel' => $this->channel,
