@@ -39,6 +39,7 @@ use alexeevdv\log\SlackTarget;
             [
                 'class' => SlackTarget::class,
                 'webhook' => 'https://your_webhook_link',
+                // other optional params goes here
             ],
             //...
         ],
