@@ -91,7 +91,9 @@ class SlackTarget extends Target
                     'text' => $this->formatMessage($message),
                 ]
             );
-            $this->getClient()->attach($attachment)->send();
+            $slackMessage = $this->getClient()->createMessage();
+            $slackMessage->attach($attachment)->send();
+            $slackMessage->send();
         }
     }
 
