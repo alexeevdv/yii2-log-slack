@@ -12,13 +12,13 @@ The preferred way to install this extension is through [composer](https://getcom
 Either run
 
 ```bash
-$ php composer.phar require alexeevdv/yii2-log-slack "~1.0"
+$ php composer.phar require alexeevdv/yii2-log-slack "~1.0.0"
 ```
 
 or add
 
 ```
-"alexeevdv/yii2-log-slack": "~1.0"
+"alexeevdv/yii2-log-slack": "~1.0.0"
 ```
 
 to the ```require``` section of your `composer.json` file.
