@@ -7,6 +7,10 @@ php:
   - '7.3'
   - '7.4'
 
+env:
+  global:
+    - CODECOV_TOKEN="53528624-d7e6-454c-94d4-5f4cacbeccc8"
+
 install:
     - composer install
 
