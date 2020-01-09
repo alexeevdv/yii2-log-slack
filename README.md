@@ -1,7 +1,7 @@
 SlackTarget for Yii2 logger
 ===========================
 
-[![Build Status](https://travis-ci.com/alexeevdv/yii2-log-slack.svg?branch=master)](https://travis-ci.com/alexeevdv/yii2-log-slack)
+[![Build Status](https://travis-ci.org/alexeevdv/yii2-log-slack.svg?branch=master)](https://travis-ci.org/alexeevdv/yii2-log-slack)
 [![codecov](https://codecov.io/gh/alexeevdv/yii2-log-slack/branch/master/graph/badge.svg)](https://codecov.io/gh/alexeevdv/yii2-log-slack)
 
 ![PHP 5.6](https://img.shields.io/badge/PHP-5.6-green.svg) 
